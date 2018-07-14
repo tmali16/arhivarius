@@ -31,13 +31,26 @@ namespace Rhivarius
         Label user_txt;
         Label pass_txt;
         Label excep_txt;
-        Label user_list;
+        //Label user_list;
         public Form1()
         {
             InitializeComponent();
             sign = new Panel();
             sign_in = new Button();
             sign_in.Click += Sign_in_Click;
+            
+        }
+        void users_label(string name)
+        {
+            Label user_list = new Label();
+            user_list.Height = 30;
+            user_list.Width = u_cont.Width;
+            user_list.TextAlign = ContentAlignment.MiddleCenter;
+            user_list.ForeColor = Color.White;
+            user_list.BackColor = Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(163)))), ((int)(((byte)(164)))));
+            user_list.Margin = new Padding(0, 0, 0, 10);
+            user_list.Text = dr.GetString(2);
+            u_cont.Controls.Add(user_list);
         }
         void list_user()
         {
@@ -51,17 +64,27 @@ namespace Rhivarius
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             dr = cmd.ExecuteReader();
-            while (dr.Read())
+            if (dr.Read())
             {
-                user_list = new Label();
-                user_list.Height = 30;
-                user_list.Width = u_cont.Width;
-                user_list.TextAlign = ContentAlignment.MiddleCenter;
-                user_list.ForeColor = Color.White;
-                user_list.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(163)))), ((int)(((byte)(164)))));
-                user_list.Margin = new Padding(0, 0, 0, 10);
-                user_list.Text = dr.GetString(2);
-                u_cont.Controls.Add(user_list);
+                //    for (int i = 0; i < dr.FieldCount; i++)
+                //    {
+                //        Label user_list = new Label();
+                //        user_list.Height = 30;
+                //        user_list.Width = u_cont.Width;
+                //        user_list.TextAlign = ContentAlignment.MiddleCenter;
+                //        user_list.ForeColor = Color.White;
+                //        user_list.BackColor = Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(163)))), ((int)(((byte)(164)))));
+                //        user_list.Margin = new Padding(0, 0, 0, 10);
+                //        user_list.Text = dr.GetString(2);
+                //        u_cont.Controls.Add(user_list);
+
+                //    }
+                //    dr.NextResult();
+                //}
+                do
+                {
+                    users_label(dr.GetString(2));
+                } while (dr.NextResult());
             }
         }
         public void createDB()
@@ -193,10 +216,15 @@ namespace Rhivarius
             pass.Width = 200;
             subPnl.Width = 300;
             subPnl.Height = 220;
+            sign_in.FlatStyle = FlatStyle.Flat;
+            sign_in.FlatAppearance.BorderSize = 0;
             subPnl.BorderStyle = BorderStyle.FixedSingle;
+            subPnl.BackColor = Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(189)))), ((int)(((byte)(227)))));
+            sign.BackColor = Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(149)))), ((int)(((byte)(167)))));
+            sign_in.BackColor = Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(219)))), ((int)(((byte)(251)))));
             user.Name = "username";
             pass.Name = "password";
-
+            //rgba(72, 219, 251,1.0)
             user_txt.AutoSize = true;
             excep_txt.AutoSize = false;
             excep_txt.Height = 37;
