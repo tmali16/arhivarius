@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.f_max_btn = new System.Windows.Forms.PictureBox();
-            this.f_close_btn = new System.Windows.Forms.PictureBox();
             this.statya_grid = new System.Windows.Forms.DataGridView();
             this.statya = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statya_chast = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,11 +66,12 @@
             this.bottom_pnl = new System.Windows.Forms.Panel();
             this.cancel_btn = new System.Windows.Forms.Button();
             this.Save_btn = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.f_max_btn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.f_close_btn)).BeginInit();
+            this.predecha_box = new System.Windows.Forms.GroupBox();
+            this.gde_c_box = new System.Windows.Forms.ComboBox();
+            this.peredacha_cbox = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.peredach_Fio = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.statya_grid)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,55 +81,8 @@
             this.fio_pnl.SuspendLayout();
             this.fabula_gb.SuspendLayout();
             this.bottom_pnl.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.predecha_box.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.f_max_btn);
-            this.panel1.Controls.Add(this.f_close_btn);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(915, 33);
-            this.panel1.TabIndex = 0;
-            this.panel1.DoubleClick += new System.EventHandler(this.panel1_DoubleClick);
-            this.panel1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDoubleClick);
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            // 
-            // f_max_btn
-            // 
-            this.f_max_btn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.f_max_btn.BackColor = System.Drawing.Color.Transparent;
-            this.f_max_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.f_max_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.f_max_btn.Image = global::Rhivarius.Properties.Resources.maxsimize;
-            this.f_max_btn.Location = new System.Drawing.Point(830, 2);
-            this.f_max_btn.Margin = new System.Windows.Forms.Padding(4, 4, 7, 4);
-            this.f_max_btn.Name = "f_max_btn";
-            this.f_max_btn.Size = new System.Drawing.Size(28, 28);
-            this.f_max_btn.TabIndex = 1;
-            this.f_max_btn.TabStop = false;
-            this.f_max_btn.Click += new System.EventHandler(this.f_max_btn_Click);
-            // 
-            // f_close_btn
-            // 
-            this.f_close_btn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.f_close_btn.BackColor = System.Drawing.Color.Transparent;
-            this.f_close_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.f_close_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.f_close_btn.Image = global::Rhivarius.Properties.Resources.close;
-            this.f_close_btn.Location = new System.Drawing.Point(876, 4);
-            this.f_close_btn.Margin = new System.Windows.Forms.Padding(4, 4, 7, 4);
-            this.f_close_btn.Name = "f_close_btn";
-            this.f_close_btn.Size = new System.Drawing.Size(28, 28);
-            this.f_close_btn.TabIndex = 0;
-            this.f_close_btn.TabStop = false;
-            this.f_close_btn.Click += new System.EventHandler(this.f_close_btn_Click);
             // 
             // statya_grid
             // 
@@ -192,7 +143,7 @@
             this.organ_ud_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.organ_ud_txt.Location = new System.Drawing.Point(8, 54);
             this.organ_ud_txt.Margin = new System.Windows.Forms.Padding(4);
-            this.organ_ud_txt.MaxLength = 4;
+            this.organ_ud_txt.MaxLength = 3;
             this.organ_ud_txt.Name = "organ_ud_txt";
             this.organ_ud_txt.Size = new System.Drawing.Size(47, 23);
             this.organ_ud_txt.TabIndex = 0;
@@ -211,8 +162,9 @@
             // 
             this.god_vozb_txt.Location = new System.Drawing.Point(80, 54);
             this.god_vozb_txt.Margin = new System.Windows.Forms.Padding(4);
+            this.god_vozb_txt.MaxLength = 2;
             this.god_vozb_txt.Name = "god_vozb_txt";
-            this.god_vozb_txt.Size = new System.Drawing.Size(69, 23);
+            this.god_vozb_txt.Size = new System.Drawing.Size(64, 23);
             this.god_vozb_txt.TabIndex = 2;
             this.god_vozb_txt.TextChanged += new System.EventHandler(this.god_vozb_txt_TextChanged);
             // 
@@ -229,6 +181,7 @@
             // 
             this.ud_num_txt.Location = new System.Drawing.Point(178, 53);
             this.ud_num_txt.Margin = new System.Windows.Forms.Padding(4);
+            this.ud_num_txt.MaxLength = 5;
             this.ud_num_txt.Name = "ud_num_txt";
             this.ud_num_txt.Size = new System.Drawing.Size(74, 23);
             this.ud_num_txt.TabIndex = 4;
@@ -507,16 +460,18 @@
             // 
             // cancel_btn
             // 
+            this.cancel_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancel_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancel_btn.Location = new System.Drawing.Point(800, 9);
+            this.cancel_btn.Location = new System.Drawing.Point(791, 9);
             this.cancel_btn.Name = "cancel_btn";
-            this.cancel_btn.Size = new System.Drawing.Size(88, 30);
+            this.cancel_btn.Size = new System.Drawing.Size(100, 30);
             this.cancel_btn.TabIndex = 0;
             this.cancel_btn.Text = "Отмена";
             this.cancel_btn.UseVisualStyleBackColor = true;
             // 
             // Save_btn
             // 
+            this.Save_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Save_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Save_btn.Location = new System.Drawing.Point(652, 9);
             this.Save_btn.Name = "Save_btn";
@@ -526,30 +481,75 @@
             this.Save_btn.UseVisualStyleBackColor = true;
             this.Save_btn.Click += new System.EventHandler(this.Save_btn_Click);
             // 
-            // groupBox3
+            // predecha_box
             // 
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Location = new System.Drawing.Point(612, 245);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(282, 65);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.predecha_box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.predecha_box.Controls.Add(this.label14);
+            this.predecha_box.Controls.Add(this.peredach_Fio);
+            this.predecha_box.Controls.Add(this.label11);
+            this.predecha_box.Controls.Add(this.peredacha_cbox);
+            this.predecha_box.Controls.Add(this.gde_c_box);
+            this.predecha_box.Location = new System.Drawing.Point(612, 245);
+            this.predecha_box.Name = "predecha_box";
+            this.predecha_box.Size = new System.Drawing.Size(282, 194);
+            this.predecha_box.TabIndex = 11;
+            this.predecha_box.TabStop = false;
+            this.predecha_box.Text = "groupBox3";
+            this.predecha_box.Leave += new System.EventHandler(this.predecha_box_Leave);
             // 
-            // comboBox1
+            // gde_c_box
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 22);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(270, 24);
-            this.comboBox1.TabIndex = 0;
+            this.gde_c_box.FormattingEnabled = true;
+            this.gde_c_box.Items.AddRange(new object[] {
+            "в Архиве",
+            "Передано"});
+            this.gde_c_box.Location = new System.Drawing.Point(6, 22);
+            this.gde_c_box.Name = "gde_c_box";
+            this.gde_c_box.Size = new System.Drawing.Size(270, 24);
+            this.gde_c_box.TabIndex = 0;
+            this.gde_c_box.SelectedIndexChanged += new System.EventHandler(this.gde_c_box_SelectedIndexChanged);
+            // 
+            // peredacha_cbox
+            // 
+            this.peredacha_cbox.FormattingEnabled = true;
+            this.peredacha_cbox.Items.AddRange(new object[] {
+            "Запрос"});
+            this.peredacha_cbox.Location = new System.Drawing.Point(6, 86);
+            this.peredacha_cbox.Name = "peredacha_cbox";
+            this.peredacha_cbox.Size = new System.Drawing.Size(270, 24);
+            this.peredacha_cbox.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(149, 17);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Основание передачи";
+            // 
+            // peredach_Fio
+            // 
+            this.peredach_Fio.Location = new System.Drawing.Point(6, 150);
+            this.peredach_Fio.Name = "peredach_Fio";
+            this.peredach_Fio.Size = new System.Drawing.Size(270, 23);
+            this.peredach_Fio.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 130);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(109, 17);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Кому передано";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 499);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.predecha_box);
             this.Controls.Add(this.bottom_pnl);
             this.Controls.Add(this.fabula_gb);
             this.Controls.Add(this.fio_pnl);
@@ -557,16 +557,12 @@
             this.Controls.Add(this.stadiya_gb);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form2_Paint);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.f_max_btn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.f_close_btn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statya_grid)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -582,16 +578,13 @@
             this.fabula_gb.ResumeLayout(false);
             this.fabula_gb.PerformLayout();
             this.bottom_pnl.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.predecha_box.ResumeLayout(false);
+            this.predecha_box.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox f_close_btn;
-        private System.Windows.Forms.PictureBox f_max_btn;
         private System.Windows.Forms.DataGridView statya_grid;
         private System.Windows.Forms.DataGridViewTextBoxColumn statya;
         private System.Windows.Forms.DataGridViewTextBoxColumn statya_chast;
@@ -630,7 +623,11 @@
         private System.Windows.Forms.Panel bottom_pnl;
         private System.Windows.Forms.Button cancel_btn;
         private System.Windows.Forms.Button Save_btn;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox predecha_box;
+        private System.Windows.Forms.ComboBox gde_c_box;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox peredach_Fio;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox peredacha_cbox;
     }
 }

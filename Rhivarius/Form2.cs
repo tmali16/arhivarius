@@ -23,11 +23,7 @@ namespace Rhivarius
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int WParam, int lParam);
 
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
         public Form2()
         {
             InitializeComponent();
@@ -35,11 +31,6 @@ namespace Rhivarius
 
         private void panel1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
         }
 
         private void f_close_btn_Click(object sender, EventArgs e)
@@ -52,29 +43,7 @@ namespace Rhivarius
 
         }
 
-        private void panel1_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void f_max_btn_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
+      
 
         private void organ_ud_txt_TextChanged(object sender, EventArgs e)
         {
@@ -101,9 +70,17 @@ namespace Rhivarius
 
         private void god_vozb_txt_TextChanged(object sender, EventArgs e)
         {
-            if (god_vozb_txt.Text.Length == 4)
+            if (god_vozb_txt.Text.Length == 2)
             {
-                date_vozb_txt.Value = Convert.ToDateTime("01.01." + god_vozb_txt.Text);
+                if (Convert.ToInt32(god_vozb_txt.Text) >=40  && Convert.ToInt32(god_vozb_txt.Text) <= 99)
+                {
+                    date_vozb_txt.Value = Convert.ToDateTime("01.01.19" + god_vozb_txt.Text);
+                }
+                else
+                {
+                    date_vozb_txt.Value = Convert.ToDateTime("01.01.20" + god_vozb_txt.Text);
+                }
+                
             }
         }
 
@@ -140,7 +117,10 @@ namespace Rhivarius
             if (txt_len_0(ud_num_txt)) { txtError(ud_num_txt); return true; } else { txtError(ud_num_txt); }
             if (txt_len_0(organ_vozb_txt)) { txtError(organ_vozb_txt); return true; } else { txtError(organ_vozb_txt); }
             if (statya_grid.Rows[0].Cells[1].Value == ""){statya_grid.BackgroundColor = Color.Red; return true; } else{statya_grid.BackgroundColor = Color.Gray;}
-
+            if (txt_len_0(fabula)) { txtError(fabula); return true; } else { txtError(fabula); }
+            if (upk_pnkt_txt.SelectedIndex != 3){ txtError(rd_nomer); txtError(rd_fio); return true; } else { txtError(rd_nomer); txtError(rd_fio); }
+            if (txt_len_0(sledovatel)) { txtError(sledovatel); return true; } else { txtError(sledovatel); }
+            if (txt_len_0(terpila)) { txtError(terpila); return true; } else { txtError(terpila); }
             return false;
         }
         private void guit_CheckedChanged(object sender, EventArgs e)
@@ -162,6 +142,9 @@ namespace Rhivarius
             if (txt_len_0(god_vozb_txt))   { txtError(god_vozb_txt);       } else { txtError(god_vozb_txt);   }
             if (txt_len_0(ud_num_txt))     { txtError(ud_num_txt);         } else { txtError(ud_num_txt);     }
             if (txt_len_0(organ_vozb_txt)) { txtError(organ_vozb_txt);     } else { txtError(organ_vozb_txt); }
+            if (date_vozb_txt.Text.Substring(0, 6) == "01.01."){ var res = MessageBox.Show("Дата возбуждения установлено верно?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.No) { date_vozb_txt.Focus(); }
+            }
         }
         private void fabula_gb_Leave(object sender, EventArgs e)
         {
@@ -172,6 +155,16 @@ namespace Rhivarius
         {            
 
         }
+        void statya_ins(string statya, string chast, string punkt)
+        {
+            string begin = "insert in to";
+            string loops = "";
+            string all = "";
+            for (int i = 0; i < statya_grid.Rows.Count; i++)
+            {
+
+            }
+        }
         void insert(string organ, string god_ud, string nomer_ud, string rd_nomer, string rd_fio, string statya_uk, string punkt_stadiya, DateTime date_vozb_organ, string punkt, bool guit, string fabula, string terpila, string sledovatel, string primechanie)
         {
             con = new SQLiteConnection();
@@ -180,10 +173,10 @@ namespace Rhivarius
             con.ConnectionString = "datasource=" + dbNmae + "; Version=3";
             try
             {
-                string insert = "INSERT INTO arhiv_ud (organ, god_ud, nomer_ud,date_vozb_ud,punkt_stadiya,rd_nomer,rd_fio,guit,fabula,poterpevshiy,sledovatel,primechanie,statya_id,perdacha_id)" +
-                     "VALUES(@organ, @god_ud,@nomer_ud, @date_vozb_ud, @punkt_stadiya, @rd_nomer, @rd_fio, @guit, @fabula," +
-                     " @poterpevshiy, @sledovatel, @primechanie, @statya_id, @perdacha_id); ";
-                cmd.CommandText = insert;
+                string arhiv_ud = "INSERT INTO arhiv_ud (organ, god_ud, nomer_ud, date_vozb_ud, punkt_stadiya, rd_nomer, rd_fio,guit, fabula,"
+                        +" poterpevshiy, sledovatel, primechanie,statya_id, perdacha_id ) VALUES("+
+                            "@organ," +"god_ud," +"@nomer_ud," +"date_vozb_ud," +"@punkt_stadiya," +"@rd_nomer," +"@rd_fio," +"@guit," +"@fabula," +"@poterpevshiy," +"@sledovatel," +"@primechanie," +"@statya_id," +"@perdacha_id)";
+                cmd.CommandText = arhiv_ud; 
                 cmd.Parameters.Add(new SQLiteParameter("@organ", date_vozb_organ));
                 cmd.Parameters.Add(new SQLiteParameter("@god_ud", god_ud));
                 cmd.Parameters.Add(new SQLiteParameter("@nomer_ud", nomer_ud));
@@ -215,7 +208,11 @@ namespace Rhivarius
         {
             if (isValid())
             {
-
+                MessageBox.Show("No");
+            }
+            else
+            {
+                MessageBox.Show("yes");
             }
         }
 
@@ -224,6 +221,35 @@ namespace Rhivarius
             if (upk_pnkt_txt.SelectedIndex == 3)
             {
                 if (txt_len_0(rd_fio)){ txtError(rd_fio); } else { txtError(rd_fio);}
+            }
+        }
+
+        private void gde_c_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (gde_c_box.SelectedIndex == 0)
+            {
+                predecha_box.Height = 55;
+                peredacha_cbox.Visible = false;
+                peredach_Fio.Visible = false;
+            }
+            else
+            {
+                predecha_box.Height = 194;
+                peredacha_cbox.Visible = true;
+                peredach_Fio.Visible = true;
+            }
+        }
+
+        private void predecha_box_Leave(object sender, EventArgs e)
+        {
+            if (gde_c_box.SelectedIndex != 0)
+            {            
+                if (txt_len_0(peredacha_cbox)) { txtError(peredacha_cbox); } else { txtError(peredacha_cbox); }
+                if (txt_len_0(peredach_Fio)) { txtError(peredach_Fio); } else { txtError(peredach_Fio); }
+            }
+            else
+            {
+                if (txt_len_0(gde_c_box)) { txtError(gde_c_box); } else { txtError(gde_c_box); }
             }
         }
     }
