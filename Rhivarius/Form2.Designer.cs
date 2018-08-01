@@ -67,11 +67,13 @@
             this.cancel_btn = new System.Windows.Forms.Button();
             this.Save_btn = new System.Windows.Forms.Button();
             this.predecha_box = new System.Windows.Forms.GroupBox();
-            this.gde_c_box = new System.Windows.Forms.ComboBox();
-            this.peredacha_cbox = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.peredach_Fio = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.peredach_Fio = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.peredacha_cbox = new System.Windows.Forms.ComboBox();
+            this.gde_c_box = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.primichanie_txt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.statya_grid)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -82,6 +84,7 @@
             this.fabula_gb.SuspendLayout();
             this.bottom_pnl.SuspendLayout();
             this.predecha_box.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statya_grid
@@ -129,7 +132,7 @@
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox2.Controls.Add(this.statya_grid);
-            this.groupBox2.Location = new System.Drawing.Point(325, 64);
+            this.groupBox2.Location = new System.Drawing.Point(325, 46);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupBox2.Size = new System.Drawing.Size(264, 161);
@@ -185,6 +188,7 @@
             this.ud_num_txt.Name = "ud_num_txt";
             this.ud_num_txt.Size = new System.Drawing.Size(74, 23);
             this.ud_num_txt.TabIndex = 4;
+            this.ud_num_txt.TextChanged += new System.EventHandler(this.ud_num_txt_TextChanged);
             // 
             // label3
             // 
@@ -263,7 +267,7 @@
             this.groupBox1.Controls.Add(this.god_vozb_txt);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.organ_ud_txt);
-            this.groupBox1.Location = new System.Drawing.Point(15, 64);
+            this.groupBox1.Location = new System.Drawing.Point(15, 46);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -280,7 +284,7 @@
             this.stadiya_gb.Controls.Add(this.rd_panel);
             this.stadiya_gb.Controls.Add(this.upk_pnkt_txt);
             this.stadiya_gb.Controls.Add(this.label8);
-            this.stadiya_gb.Location = new System.Drawing.Point(612, 64);
+            this.stadiya_gb.Location = new System.Drawing.Point(612, 46);
             this.stadiya_gb.Name = "stadiya_gb";
             this.stadiya_gb.Size = new System.Drawing.Size(282, 160);
             this.stadiya_gb.TabIndex = 3;
@@ -373,7 +377,7 @@
             this.fabula.Location = new System.Drawing.Point(3, 19);
             this.fabula.Multiline = true;
             this.fabula.Name = "fabula";
-            this.fabula.Size = new System.Drawing.Size(258, 175);
+            this.fabula.Size = new System.Drawing.Size(879, 79);
             this.fabula.TabIndex = 0;
             // 
             // sledovatel
@@ -416,7 +420,7 @@
             // 
             this.guit_gb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guit_gb.Controls.Add(this.guit);
-            this.guit_gb.Location = new System.Drawing.Point(12, 372);
+            this.guit_gb.Location = new System.Drawing.Point(12, 354);
             this.guit_gb.Name = "guit_gb";
             this.guit_gb.Size = new System.Drawing.Size(293, 67);
             this.guit_gb.TabIndex = 5;
@@ -430,7 +434,7 @@
             this.fio_pnl.Controls.Add(this.terpila);
             this.fio_pnl.Controls.Add(this.label12);
             this.fio_pnl.Controls.Add(this.label13);
-            this.fio_pnl.Location = new System.Drawing.Point(12, 245);
+            this.fio_pnl.Location = new System.Drawing.Point(12, 227);
             this.fio_pnl.Name = "fio_pnl";
             this.fio_pnl.Size = new System.Drawing.Size(293, 121);
             this.fio_pnl.TabIndex = 8;
@@ -439,9 +443,9 @@
             // 
             this.fabula_gb.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fabula_gb.Controls.Add(this.fabula);
-            this.fabula_gb.Location = new System.Drawing.Point(325, 245);
+            this.fabula_gb.Location = new System.Drawing.Point(9, 427);
             this.fabula_gb.Name = "fabula_gb";
-            this.fabula_gb.Size = new System.Drawing.Size(264, 197);
+            this.fabula_gb.Size = new System.Drawing.Size(885, 101);
             this.fabula_gb.TabIndex = 9;
             this.fabula_gb.TabStop = false;
             this.fabula_gb.Text = "Фабула";
@@ -453,7 +457,7 @@
             this.bottom_pnl.Controls.Add(this.cancel_btn);
             this.bottom_pnl.Controls.Add(this.Save_btn);
             this.bottom_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottom_pnl.Location = new System.Drawing.Point(0, 449);
+            this.bottom_pnl.Location = new System.Drawing.Point(0, 534);
             this.bottom_pnl.Name = "bottom_pnl";
             this.bottom_pnl.Size = new System.Drawing.Size(915, 50);
             this.bottom_pnl.TabIndex = 10;
@@ -489,13 +493,48 @@
             this.predecha_box.Controls.Add(this.label11);
             this.predecha_box.Controls.Add(this.peredacha_cbox);
             this.predecha_box.Controls.Add(this.gde_c_box);
-            this.predecha_box.Location = new System.Drawing.Point(612, 245);
+            this.predecha_box.Location = new System.Drawing.Point(325, 227);
             this.predecha_box.Name = "predecha_box";
             this.predecha_box.Size = new System.Drawing.Size(282, 194);
             this.predecha_box.TabIndex = 11;
             this.predecha_box.TabStop = false;
             this.predecha_box.Text = "groupBox3";
             this.predecha_box.Leave += new System.EventHandler(this.predecha_box_Leave);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 130);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(109, 17);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Кому передано";
+            // 
+            // peredach_Fio
+            // 
+            this.peredach_Fio.Location = new System.Drawing.Point(6, 150);
+            this.peredach_Fio.Name = "peredach_Fio";
+            this.peredach_Fio.Size = new System.Drawing.Size(270, 23);
+            this.peredach_Fio.TabIndex = 3;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(149, 17);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Основание передачи";
+            // 
+            // peredacha_cbox
+            // 
+            this.peredacha_cbox.FormattingEnabled = true;
+            this.peredacha_cbox.Items.AddRange(new object[] {
+            "Запрос"});
+            this.peredacha_cbox.Location = new System.Drawing.Point(6, 86);
+            this.peredacha_cbox.Name = "peredacha_cbox";
+            this.peredacha_cbox.Size = new System.Drawing.Size(270, 24);
+            this.peredacha_cbox.TabIndex = 1;
             // 
             // gde_c_box
             // 
@@ -509,46 +548,31 @@
             this.gde_c_box.TabIndex = 0;
             this.gde_c_box.SelectedIndexChanged += new System.EventHandler(this.gde_c_box_SelectedIndexChanged);
             // 
-            // peredacha_cbox
+            // groupBox3
             // 
-            this.peredacha_cbox.FormattingEnabled = true;
-            this.peredacha_cbox.Items.AddRange(new object[] {
-            "Запрос"});
-            this.peredacha_cbox.Location = new System.Drawing.Point(6, 86);
-            this.peredacha_cbox.Name = "peredacha_cbox";
-            this.peredacha_cbox.Size = new System.Drawing.Size(270, 24);
-            this.peredacha_cbox.TabIndex = 1;
+            this.groupBox3.Controls.Add(this.primichanie_txt);
+            this.groupBox3.Location = new System.Drawing.Point(612, 227);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(282, 194);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Примичание";
             // 
-            // label11
+            // primichanie_txt
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 66);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(149, 17);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Основание передачи";
-            // 
-            // peredach_Fio
-            // 
-            this.peredach_Fio.Location = new System.Drawing.Point(6, 150);
-            this.peredach_Fio.Name = "peredach_Fio";
-            this.peredach_Fio.Size = new System.Drawing.Size(270, 23);
-            this.peredach_Fio.TabIndex = 3;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 130);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(109, 17);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Кому передано";
+            this.primichanie_txt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.primichanie_txt.Location = new System.Drawing.Point(3, 19);
+            this.primichanie_txt.Multiline = true;
+            this.primichanie_txt.Name = "primichanie_txt";
+            this.primichanie_txt.Size = new System.Drawing.Size(276, 172);
+            this.primichanie_txt.TabIndex = 0;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 499);
+            this.ClientSize = new System.Drawing.Size(915, 584);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.predecha_box);
             this.Controls.Add(this.bottom_pnl);
             this.Controls.Add(this.fabula_gb);
@@ -580,6 +604,8 @@
             this.bottom_pnl.ResumeLayout(false);
             this.predecha_box.ResumeLayout(false);
             this.predecha_box.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -629,5 +655,7 @@
         private System.Windows.Forms.TextBox peredach_Fio;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox peredacha_cbox;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox primichanie_txt;
     }
 }

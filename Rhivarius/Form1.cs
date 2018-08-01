@@ -192,44 +192,7 @@ cmd.ExecuteNonQuery();
                 }
             }
         }
-        void insert(string organ, string god_ud, string nomer_ud, string rd_nomer, string rd_fio, string statya_uk, string punkt_stadiya, DateTime date_vozb_organ, string punkt, bool guit, string fabula, string terpila, string sledovatel, string primechanie)
-        {
-            con = new SQLiteConnection();
-            cmd = new SQLiteCommand();
-            da = new SQLiteDataAdapter();
-            con.ConnectionString = "datasource=" + dbNmae + "; Version=3";
-            try
-            {
-                string insert = "INSERT INTO arhiv_ud (organ, god_ud, nomer_ud,date_vozb_ud,punkt_stadiya,rd_nomer,rd_fio,guit,fabula,poterpevshiy,sledovatel,primechanie,statya_id,perdacha_id)" +
-                     "VALUES(@organ, @god_ud,@nomer_ud, @date_vozb_ud, @punkt_stadiya, @rd_nomer, @rd_fio, @guit, @fabula," +
-                     " @poterpevshiy, @sledovatel, @primechanie, @statya_id, @perdacha_id); ";
-                cmd.CommandText = insert;
-                cmd.Parameters.Add(new SQLiteParameter("@organ", date_vozb_organ));
-                cmd.Parameters.Add(new SQLiteParameter("@god_ud", god_ud));
-                cmd.Parameters.Add(new SQLiteParameter("@nomer_ud", nomer_ud));
-                cmd.Parameters.Add(new SQLiteParameter("@date_vozb_ud", date_vozb_organ));
-                cmd.Parameters.Add(new SQLiteParameter("@punkt_stadiya", punkt_stadiya));
-                cmd.Parameters.Add(new SQLiteParameter("@rd_nomer", rd_nomer));
-                cmd.Parameters.Add(new SQLiteParameter("@rd_fio", rd_fio));
-                cmd.Parameters.Add(new SQLiteParameter("@fabula", fabula));
-                cmd.Parameters.Add(new SQLiteParameter("@poterpevshiy", terpila));
-                cmd.Parameters.Add(new SQLiteParameter("@sledovatel", sledovatel));
-                cmd.Parameters.Add(new SQLiteParameter("@primechanie", primechanie));
-                cmd.Parameters.Add(new SQLiteParameter("@sledovatel", guit));
-                cmd.Parameters.Add(new SQLiteParameter("@statya_id", guit));
-                cmd.Parameters.Add(new SQLiteParameter("@perdacha_id", guit));
-                cmd.Connection = con;
-                cmd.ExecuteNonQuery();
-            }
-            catch (SQLiteException ex)
-            {
-                errors = ex.Message;
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
+        
         void Sign_in()
         {
             menuStrip1.Enabled = false;
@@ -497,7 +460,7 @@ cmd.ExecuteNonQuery();
                     grid_view.Rows[rowCount].Cells[0].Value = dr.GetString(1) + "-"+ dr.GetString(2)+"-"+dr.GetString(3);
                     grid_view.Rows[rowCount].Cells[1].Value = dr.GetString(4);
                     grid_view.Rows[rowCount].Cells[2].Value = (dr.GetInt32(8) == 1 ? true : false);
-                    grid_view.Rows[rowCount].Cells[3].Value = "221 ч1. п" + dr.GetInt32(5).ToString();
+                    grid_view.Rows[rowCount].Cells[3].Value = dr.GetString(5);
                     grid_view.Rows[rowCount].Cells[4].Value = dr.GetString(11);
                     grid_view.Rows[rowCount].Cells[5].Value = dr.GetString(10);
                     grid_view.Rows[rowCount].Cells[6].Value = dr[12].ToString();
